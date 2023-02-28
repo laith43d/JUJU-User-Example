@@ -45,7 +45,7 @@ class User(Model):
     # __guarded__ = ['id', 'password', 'password_again']
 
     def __repr__(self):
-        return '<User {}>'.format(self.username)
+        return f'<User {self.username}>'
 
     @property
     def rolenames(self):
@@ -56,8 +56,7 @@ class User(Model):
 
     @classmethod
     def lookup(cls, username):
-        result = cls.query().where('username', username).first_or_fail()
-        if result:
+        if result := cls.query().where('username', username).first_or_fail():
             return result
         else:
             return None

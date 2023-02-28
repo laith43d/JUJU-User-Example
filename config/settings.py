@@ -61,7 +61,9 @@ guard = Praetorian(app = app, user_class = User)
 
 formatter = logging.Formatter(
     "[%(asctime)s] {%(pathname)s:%(lineno)d} %(levelname)s - %(message)s")
-handler = RotatingFileHandler(LOG_DIR + '/app.log', maxBytes = 1000000, backupCount = 5)
+handler = RotatingFileHandler(
+    f'{LOG_DIR}/app.log', maxBytes=1000000, backupCount=5
+)
 handler.setLevel(logging.DEBUG)
 handler.setFormatter(formatter)
 app.logger.addHandler(handler)
